@@ -1,0 +1,70 @@
+/* IMPORTACION DE FUENTES */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap');
+/* PALETA DE COLORES */
+:root{
+    --color1: #F8F1F1;
+    --color2: #11698E;
+    --color3: #19456B;
+    --color4: #7B113A;
+    --color5: black;
+}
+
+body{
+    font-family: 'Montserrat','Roboto',sans-serif !important;
+}
+
+
+
+#inicio{
+    background: url("../IMG/PORTADA2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.jumbotron{
+    width: 100%;
+    height: 600px;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    padding-top: 200px;
+}
+
+.boton{
+  color: var(--color1);
+  border: solid 3px var(--color3);
+}
+
+.boton:hover{
+  color: var(--color1);
+  background: var(--color3);
+  border: none;
+  border-radius: 15px 5px 15px 5px;
+  transition: all 0.5s linear;
+}
+.img-size1{
+  max-width: 100px;
+  max-height: 100px;
+  border-radius: 15px;
+}
+
+.img-noticia{
+  max-height: 600px;
+  max-width: 800px;
+  border-radius: 10px;
+}
+
+.circulo{
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+}
+.imagen{
+  width: 200px;
+  height: 200px;
+}
+.circulo > .imagen{
+  width: 100%;
+  height: 100%; 
+  border-radius: 100%;
+}
+

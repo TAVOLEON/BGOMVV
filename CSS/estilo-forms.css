@@ -1,0 +1,61 @@
+/* IMPORTACION DE FUENTES */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap');
+/* PALETA DE COLORES */
+:root{
+    --color1: #F8F1F1;
+    --color2: #11698E;
+    --color3: #19456B;
+    --color4: #7B113A;
+    --color5: black;
+}
+
+body{
+    font-family: 'Montserrat','Roboto',sans-serif !important;
+}
+
+  /* ESTILOS FORMULARIO */
+#form{
+    background: url("../IMG/PORTADA2.jpg");
+    background-repeat: no-repeat;
+    background-size: none;
+}
+
+.container{
+    width: 100%;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    padding-top: 50px;
+    border-radius: 15px;
+}
+
+.login{
+  width: 100%;
+  height: 600px;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  padding-top: 50px;
+}
+
+.img-size-form{
+  max-width: 250px;
+  max-width: 250px;
+  border-radius: 15px;
+}
+
+.boton:hover{
+  background: var(--color3);
+
+  border-radius: 15px 5px 15px 5px;
+  transition: all 0.5s linear;
+}
+
+#input{
+  text-align: center;
+  border-color: var(--color4);
+  border-radius: 15px 5px 15px 5px;
+}
+
+#input::selection{
+  border-color: var(--color4);
+  transition: all 0.5s linear;
+}

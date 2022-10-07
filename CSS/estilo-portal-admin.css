@@ -1,0 +1,57 @@
+/* IMPORTACION DE FUENTES */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap');
+/* PALETA DE COLORES */
+:root{
+    --color1: #F8F1F1;
+    --color2: #11698E;
+    --color3: #19456B;
+    --color4: #7B113A;
+    --color5: black;
+}
+
+body{
+    font-family: 'Montserrat','Roboto',sans-serif !important;
+    overflow: hidden;
+
+}
+
+.bg-primary{
+  background-color: var(--color4) !important;
+}
+
+#sidebar-container{
+  min-height: 100vh;
+}
+
+#sidebar-container .logo{
+  padding: .875rem 1.25rem;
+
+}
+
+#sidebar-container .menu{
+  width: 1rem;
+}
+
+a:hover{
+  text-decoration: none;
+}
+
+
+
+@media (max-width: 768px){
+  
+  #sidebar-container{
+    display: none;
+  }
+}
+
+#content{
+  overflow-y: auto;
+  height: 100vh;
+  padding-bottom: 5rem;
+
+}
+
+.stat{
+  border-right: 1px solid var(--color3) ;
+}

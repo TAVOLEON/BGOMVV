@@ -1,0 +1,44 @@
+/* IMPORTACION DE FUENTES */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap');
+/* PALETA DE COLORES */
+:root{
+    --color1: #F8F1F1;
+    --color2: #11698E;
+    --color3: #19456B;
+    --color4: #7B113A;
+    --color5: black;
+}
+
+body{
+    font-family: 'Montserrat','Roboto',sans-serif !important;
+}
+
+
+#seleccion{
+    background: url("../IMG/PORTADA2.jpg");
+    background-repeat: no-repeat;
+    background-size: none;
+}
+
+.container{
+    width: 100%;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    padding-top: 50px;
+}
+
+  
+  .boton:hover{
+    background: var(--color3);
+ 
+    border-radius: 15px 5px 15px 5px;
+    transition: all 0.5s linear;
+  }
+
+  .img-size1{
+    max-width: 100px;
+    max-width: 100px;
+    border-radius: 15px;
+  }
+
+
