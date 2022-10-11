@@ -1,4 +1,6 @@
-<?php include "TEMPLETES/dashboard-admin.php";?>
+<?php include "TEMPLETES/dashboard-admin.php";
+$id=$_SESSION['id'];
+?>
 <script>
 function eliminar(){
   var respuesta = confirm("Estas seguro que deseas eliminar?");
@@ -17,13 +19,18 @@ function eliminar(){
             <ul class="navbar-nav ml-auto">
               <li class="nav-item dropdown ml-4">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <img src="" alt="">
+                <?php 
+                  include "CONF/conexion.php";
+                   $sql=$conexion->query("SELECT * FROM admin_usuario WHERE id=$id ");
+                   while($datos = $sql->fetch_object()){?>
+                  <img style="width:45px; heigt: 45px" class="img-fluid" src="data:/image/jpg;base64,<?php echo base64_encode($datos->avatar)?>">
                 <?php
+                   }
                   echo $_SESSION["nombre"] ," ", $_SESSION["apellidop"]," ", $_SESSION["apellidom"];
                 ?>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Mi Perfil</a>
+                  <a class="dropdown-item" href="editar-perfil-admin.php">Mi Perfil</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="PHP/cerrar-sesion-admin.php">Cerrar Sesion</a>
                 </div>

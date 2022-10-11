@@ -1,4 +1,8 @@
-<?php include "TEMPLETES/dashboard-admin.php";?>
+<?php include "TEMPLETES/dashboard-admin.php";
+$id=$_GET["id"];
+include "CONF/conexion.php";
+$sql=$conexion->query("SELECT * FROM materias WHERE id=$id");
+?>
 
       <div class="w-100">
         <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
@@ -32,17 +36,13 @@
             <div class="container">
               <div class="row">
                 <div class="col-lg-9">
-                  <h1 class="font-weight-bold mt-2 mb-0">Crear Anuncio</h1>
-                  <p class="lead text-muted">Llene los campos</p>
+                  <h1 class="font-weight-bold mt-2 mb-0">Editar Materia</h1>
+                  <p class="lead text-muted">Modifique los campos</p>
                 </div>
+                
               </div>
             </div>
           </section>
-
-          <section>
-            
-          </section>
-
 
           <section>
             <div class="container">
@@ -50,35 +50,31 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="col-lg-9 ">
-                        <h6 class="text-muted">Nuevo Anuncio</h6>
-                        <form method="POST" enctype="multipart/form-data">
+                        <h6 class="text-muted"></h6>
                         <?php
-                            include "CONF/conexion.php";
-                            include "PHP/ctrl-crear-anuncio-home.php";
-                         ?>
-                          <div class="form-group">
-                            <label for="titulo">Titulo</label>
-                            <input id="titulo" class="form-control" type="text" name="titulo">
-                          </div>
-                          <div class="form-group">
-                            <label for="descripcion">Descripcion</label>
-                            <textarea id="descripcion" class="form-control" name="descripcion" rows="3"></textarea>
-                          </div>
-                          <div class="form-group">
-                            <label for="enlace">Enlace</label>
-                            <input id="enlace" class="form-control" type="url" name="enlace">
-                          </div>
-                          <div class="form-group">
-                            <label for="fecha">Fecha de Publicacion</label>
-                            <input id="fecha" class="form-control" type="date" name="fecha">
-                          </div>
-                          <div class="form-group">
-                            <label for="imagen">Imagen</label>
-                             <input id="imagen" class="form-control-file" type="file" name="imagen">
-                          </div>
-                          <div class="form-group">
-                            <button type="submit" class="btn btn-outline-info" value="ok" name="btnpublicar">Publicar</button>
-                          </div>
+                            include "PHP/contrl-editar-materia.php";
+                            ?>
+                        <form method="POST" enctype="multipart/form-data">
+                          <?php
+                          while ($datos=$sql->fetch_object()) {?>
+                            <div class="form-group">
+                              <input id="id" class="form-control" type="hidden" name="id" value="<?=$datos->id?>">
+                            </div>
+                            <div class="form-group">
+                              <label for="clave">Clave</label>
+                              <input id="clave" class="form-control" type="text" name="clave" value="<?=$datos->clave?>">
+                            </div>
+                            <div class="form-group">
+                              <label for="nombre">Nombre</label>
+                              <input id="nombre" class="form-control" type="text" name="nombre" value="<?=$datos->nombre?>">
+                            </div>
+                            <div class="form-group">
+                              <button type="submit" class="btn btn-outline-info" value="ok" name="btnGuardar">Guardar</button>
+                            </div>
+                          <?php
+                          }
+                          ?>
+                          
                         </form>
                       </div>
                     </div>
@@ -86,9 +82,7 @@
                 </div>
             </div>
           </section>
-
         </div>
-
       </div>
 
 

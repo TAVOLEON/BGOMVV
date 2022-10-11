@@ -16,7 +16,7 @@
     <div class="container-fluid textos">
       <!-- BARRA DE NAVEGACION -->
       <nav class="navbar navbar-expand-lg fondo-nav navbar-light bg-light fixed-top">
-        <a href="https://www.gob.mx/sep"><img src="./IMG/SEP-LOGO.png" class="navbar-brand img-fluid" alt=""></a>
+        <a href="https://www.gob.mx/sep" target="_blank"><img src="./IMG/SEP-LOGO.png" class="navbar-brand img-fluid" alt=""></a>
         <h1 class="navbar-brand">Bachillerato Macario Valencia</h1>
         <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>

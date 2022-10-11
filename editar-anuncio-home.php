@@ -21,7 +21,7 @@ $sql=$conexion->query("SELECT * FROM anuncios_home WHERE id=$id");
                 ?>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Mi Perfil</a>
+                  <a class="dropdown-item" href="editar-perfil-admin.php">Mi Perfil</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="PHP/cerrar-sesion-admin.php">Cerrar Sesion</a>
                 </div>

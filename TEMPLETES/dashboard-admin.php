@@ -32,7 +32,7 @@ if (empty($_SESSION["id"])) {
           <a class="d-block text-light p-3" href="#">Alumnos</a>
           <a class="d-block text-light p-3" href="#">Docentes</a>
           <a class="d-block text-light p-3" href="#">Anuncios</a>
-          <a class="d-block text-light p-3" href="#">Materias</a>
+          <a class="d-block text-light p-3" href="./portal-administrativo-materias">Materias y Horarios</a>
           <a class="d-block text-light p-3" href="#">Configuracion</a>
         </div>
       </div>
