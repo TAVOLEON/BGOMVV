@@ -54,6 +54,7 @@ function eliminar(){
                 </div>
                 <div class="col-lg-3 mt-3">
                   <a href="./crear-materia.php"><button class="btn btn-outline-success w-100 aling-self-center">Agregar</button></a>
+                  <?php include "PHP/contrl-eliminar-materia.php";?>
                 </div>
               </div> 
             </div>
@@ -71,7 +72,7 @@ function eliminar(){
                         <h6 class="text-muted"><?= $datos->clave ?></h6>
                          <p><?= $datos->nombre ?></p>
                          <a href="./editar-materia.php?id=<?=$datos->id?>"><button class="btn btn-outline-info">Editar</button></a>
-                         <a href="./editar-seccion-hbgome.php?id=<?=$datos->id?>"><button class="btn btn-outline-danger">Eliminar</button></a>
+                         <a onclick="return eliminar()" href="./portal-administrativo-materias.php?id=<?=$datos->id?>"><button class="btn btn-outline-danger">Eliminar</button></a>
                       </div>
                       <?php
                       }
@@ -93,7 +94,7 @@ function eliminar(){
                   <p class="lead text-muted"></p>
                 </div>
                 <div class="col-lg-3 mt-3">
-                  <a href="./crear-materia.php"><button class="btn btn-outline-success w-100 aling-self-center">Agregar</button></a>
+                  <a href="./crear-horario.php"><button class="btn btn-outline-success w-100 aling-self-center">Agregar</button></a>
                 </div>
               </div> 
             </div>
@@ -105,13 +106,12 @@ function eliminar(){
                   <div class="row">
                     <?php 
                       include "CONF/conexion.php";
-                      $sql=$conexion->query("SELECT * FROM materias");
+                      $sql=$conexion->query("SELECT * FROM horarios");
                       while($datos = $sql->fetch_object()){?>
                       <div class="col-lg-3 stat my-3">
-                        <h6 class="text-muted"><?= $datos->clave ?></h6>
-                         <p><?= $datos->nombre ?></p>
-                         <a href="./editar-materia.php?id=<?=$datos->id?>"><button class="btn btn-outline-info">Editar</button></a>
-                         <a href="./editar-seccion-hbgome.php?id=<?=$datos->id?>"><button class="btn btn-outline-danger">Eliminar</button></a>
+                        <h6 class="text-muted"><?= $datos->titulo ?></h6>
+                         <p><?= $datos->horario ?></p>
+                         <a href="./editar-horario.php?id=<?=$datos->id?>"><button class="btn btn-outline-info">Editar</button></a>
                       </div>
                       <?php
                       }
