@@ -59,6 +59,7 @@ function eliminar(){
                         <h6 class="text-muted"></h6>
                         <?php
                             include "PHP/contrl-editar-horario.php";
+                            include "PHP/contrl-eliminar-horario.php";
                             ?>
                         <form method="POST" enctype="multipart/form-data">
                           <?php
@@ -76,12 +77,10 @@ function eliminar(){
                             </div>
                             <div class="form-group">
                               <button type="submit" class="btn btn-outline-info" value="ok" name="btnGuardar">Guardar</button>
-                              <a onclick="return eliminar()" href="./portal-administrativo-materias.php?id=<?=$datos->id?>"><button class="btn btn-outline-danger">Eliminar</button></a>
                             </div>
                         </form>
                         <?php
                           }
-                          include "PHP/contrl-eliminar-horario.php";
                           ?>
                       </div>
                     </div>

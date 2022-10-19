@@ -57,7 +57,8 @@ $sql=$conexion->query("SELECT * FROM anuncios_home WHERE id=$id");
                           <?php
                           while ($datos=$sql->fetch_object()) {?>
                             <div class="form-group">
-                              <input id="id" class="form-control" type="hidden" name="id" value="<?=$datos->id?>">
+                            <label for="titulo">Numero de Anuncio</label>
+                              <input id="id" class="form-control" type="text" name="id" value="<?=$datos->id?>">
                             </div>
                             <div class="form-group">
                               <label for="titulo">Titulo</label>

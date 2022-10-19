@@ -1,7 +1,7 @@
 <?php
 error_reporting(1);
 if (!empty($_POST["btnGuardar"])) {
-    if (!empty($_POST["titulo"]) and !empty($_POST["subtitulo"])){
+    if (!empty($_POST["titulo"])){
         $id=$_POST["id"];
         $titulo=$_POST["titulo"];
         $subtitulo=$_POST["subtitulo"];

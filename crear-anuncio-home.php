@@ -56,6 +56,10 @@
                             include "CONF/conexion.php";
                             include "PHP/ctrl-crear-anuncio-home.php";
                          ?>
+                         <div class="form-group">
+                            <label for="id">Numero de Anuncio *</label>
+                            <input id="id" class="form-control" type="number" name="id">
+                          </div>
                           <div class="form-group">
                             <label for="titulo">Titulo</label>
                             <input id="titulo" class="form-control" type="text" name="titulo">

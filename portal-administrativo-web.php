@@ -1,5 +1,5 @@
 <?php include "TEMPLETES/dashboard-admin.php";
-$id=$_SESSION['id'];
+$id=$_SESSION['curp'];
 ?>
 <script>
 function eliminar(){
@@ -21,11 +21,6 @@ function eliminar(){
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <?php 
                   include "CONF/conexion.php";
-                   $sql=$conexion->query("SELECT * FROM admin_usuario WHERE id=$id ");
-                   while($datos = $sql->fetch_object()){?>
-                  <img style="width:45px; heigt: 45px" class="img-fluid" src="data:/image/jpg;base64,<?php echo base64_encode($datos->avatar)?>">
-                <?php
-                   }
                   echo $_SESSION["nombre"] ," ", $_SESSION["apellidop"]," ", $_SESSION["apellidom"];
                 ?>
                 </a>

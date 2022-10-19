@@ -95,6 +95,7 @@ function eliminar(){
                 </div>
                 <div class="col-lg-3 mt-3">
                   <a href="./crear-horario.php"><button class="btn btn-outline-success w-100 aling-self-center">Agregar</button></a>
+                  <?php include "PHP/contrl-eliminar-horario.php"; ?>
                 </div>
               </div> 
             </div>
@@ -112,6 +113,7 @@ function eliminar(){
                         <h6 class="text-muted"><?= $datos->titulo ?></h6>
                          <p><?= $datos->horario ?></p>
                          <a href="./editar-horario.php?id=<?=$datos->id?>"><button class="btn btn-outline-info">Editar</button></a>
+                         <a onclick="return eliminar()" href="./portal-administrativo-materias.php?titulo=<?=$datos->titulo?>"><button class="btn btn-outline-danger">Eliminar</button></a>
                       </div>
                       <?php
                       }
