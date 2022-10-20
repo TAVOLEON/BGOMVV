@@ -1,5 +1,7 @@
 <?php include "TEMPLETES/dashboard-admin.php";
 $id=$_SESSION['curp'];
+include "CONF/conexion.php";
+$sqlfoto=$conexion->query("SELECT foto FROM info_personal_admin WHERE curp='$id'");
 ?>
 <script>
 function eliminar(){
@@ -17,6 +19,9 @@ function eliminar(){
           <h4>Pagina WEB</h4>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
+            <?php while($datos = $sqlfoto->fetch_object()){?>
+                <img style="width:50px; border-radius:10px;" class="img-fluid"  src="data:/image/jpg;base64,<?php echo base64_encode($datos->foto)?>" alt="">
+                <?php  } ?>
               <li class="nav-item dropdown ml-4">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <?php 
