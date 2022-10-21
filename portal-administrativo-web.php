@@ -115,7 +115,7 @@ function eliminar(){
                         <h6 class="text-muted"><?= $datos->titulo ?></h6>
                          <p><?= $datos->descripcion ?></p>
                          <a href="./editar-anuncio-home.php?id=<?=$datos->id?>"><button class="btn btn-outline-info">Editar</button></a>
-                         <a onclick="return eliminar()" href="./portal-administrativo-web?id=<?=$datos->id?>"><button class="btn btn-outline-danger">Eliminar</button></a>
+                         <a onclick="return eliminar()" href="./portal-administrativo-web.php?id=<?=$datos->id?>"><button class="btn btn-outline-danger">Eliminar</button></a>
                       </div>
                       <?php
                       }
