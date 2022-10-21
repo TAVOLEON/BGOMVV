@@ -6,7 +6,7 @@
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <h4>Pagina WEB</h4>
+          <h4>Materias</h4>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item dropdown ml-4">
@@ -32,7 +32,7 @@
             <div class="container">
               <div class="row">
                 <div class="col-lg-9">
-                  <h1 class="font-weight-bold mt-2 mb-0">Crear Anuncio</h1>
+                  <h1 class="font-weight-bold mt-2 mb-0">Crear Horario</h1>
                   <p class="lead text-muted">Llene los campos</p>
                 </div>
               </div>
@@ -40,48 +40,27 @@
           </section>
 
           <section>
-            
-          </section>
-
-
-          <section>
             <div class="container">
                 <div class="card mt-1">
                   <div class="card-body">
                     <div class="row">
                       <div class="col-lg-9 ">
-                        <h6 class="text-muted">Nuevo Anuncio</h6>
+                        <h6 class="text-muted">Nuevo Horario</h6>
                         <form method="POST" enctype="multipart/form-data">
                         <?php
                             include "CONF/conexion.php";
-                            include "PHP/ctrl-crear-anuncio-home.php";
+                            include "PHP/ctrl-crear-horario.php";
                          ?>
-                         <div class="form-group">
-                            <label for="id">Numero de Anuncio *</label>
-                            <input id="id" class="form-control" type="number" name="id">
-                          </div>
                           <div class="form-group">
                             <label for="titulo">Titulo</label>
                             <input id="titulo" class="form-control" type="text" name="titulo">
                           </div>
                           <div class="form-group">
-                            <label for="descripcion">Descripcion</label>
-                            <textarea id="descripcion" class="form-control" name="descripcion" rows="3"></textarea>
+                            <label for="horario">Hora</label>
+                            <input id="horario" class="form-control" type="text" name="horario">
                           </div>
                           <div class="form-group">
-                            <label for="enlace">Enlace</label>
-                            <input id="enlace" class="form-control" type="url" name="enlace">
-                          </div>
-                          <div class="form-group">
-                            <label for="fecha">Fecha de Publicacion</label>
-                            <input id="fecha" class="form-control" type="date" name="fecha">
-                          </div>
-                          <div class="form-group">
-                            <label for="imagen">Imagen</label>
-                             <input id="imagen" class="form-control-file" type="file" name="imagen">
-                          </div>
-                          <div class="form-group">
-                            <button type="submit" class="btn btn-outline-info" value="ok" name="btnpublicar">Publicar</button>
+                            <button type="submit" class="btn btn-outline-info" value="ok" name="btnpublicar">Crear</button>
                           </div>
                         </form>
                       </div>

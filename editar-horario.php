@@ -1,9 +1,15 @@
 <?php include "TEMPLETES/dashboard-admin.php";
 $id=$_GET["id"];
 include "CONF/conexion.php";
-$sql=$conexion->query("SELECT * FROM anuncios_home WHERE id=$id");
+$sql=$conexion->query("SELECT * FROM horarios WHERE id=$id");
 ?>
-
+<script>
+function eliminar(){
+  var respuesta = confirm("Estas seguro que deseas eliminar?");
+  return respuesta
+  
+}
+</script>
       <div class="w-100">
         <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
           <div class="container">
@@ -36,9 +42,10 @@ $sql=$conexion->query("SELECT * FROM anuncios_home WHERE id=$id");
             <div class="container">
               <div class="row">
                 <div class="col-lg-9">
-                  <h1 class="font-weight-bold mt-2 mb-0">Editar Anuncio</h1>
+                  <h1 class="font-weight-bold mt-2 mb-0">Editar Horario</h1>
                   <p class="lead text-muted">Modifique los campos</p>
                 </div>
+                
               </div>
             </div>
           </section>
@@ -49,46 +56,32 @@ $sql=$conexion->query("SELECT * FROM anuncios_home WHERE id=$id");
                   <div class="card-body">
                     <div class="row">
                       <div class="col-lg-9 ">
-                        <h6 class="text-muted">Nuevo Anuncio</h6>
+                        <h6 class="text-muted"></h6>
                         <?php
-                            include "PHP/contrl-editar-anuncio-home.php";
+                            include "PHP/contrl-editar-horario.php";
+                            include "PHP/contrl-eliminar-horario.php";
                             ?>
                         <form method="POST" enctype="multipart/form-data">
                           <?php
                           while ($datos=$sql->fetch_object()) {?>
                             <div class="form-group">
-                            <label for="titulo">Numero de Anuncio</label>
-                              <input id="id" class="form-control" type="text" name="id" value="<?=$datos->id?>">
+                              <input id="id" class="form-control" type="hidden" name="id" value="<?=$datos->id?>">
                             </div>
                             <div class="form-group">
-                              <label for="titulo">Titulo</label>
+                              <label for="titutlo">Titulo</label>
                               <input id="titulo" class="form-control" type="text" name="titulo" value="<?=$datos->titulo?>">
                             </div>
                             <div class="form-group">
-                              <label for="descripcion">Descripcion</label>
-                              <textarea id="descripcion" class="form-control" name="descripcion" rows="3"><?=$datos->descripcion?></textarea>
-                            </div>
-                            <div class="form-group">
-                              <label for="enlace">Enlace</label>
-                              <input id="enlace" class="form-control" type="url" name="enlace"  value="<?=$datos->enlace?>">
-                            </div>
-                            <div class="form-group">
-                              <label for="fecha">Fecha de Publicacion</label>
-                              <input id="fecha" class="form-control" type="date" name="fecha"  value="<?=$datos->fecha?>">
-                            </div>
-                            <div class="form-group">
-                              <label for="imagen">Imagen</label>
-                              <input id="imagen" class="form-control-file" type="file" name="imagen">
-                              <img style="width:200px;" class="img-fluid" src="data:/image/jpg;base64,<?php echo base64_encode($datos->imagen)?>" alt="">
+                              <label for="horario">Horario</label>
+                              <input id="horario" class="form-control" type="text" name="horario" value="<?=$datos->horario?>">
                             </div>
                             <div class="form-group">
                               <button type="submit" class="btn btn-outline-info" value="ok" name="btnGuardar">Guardar</button>
                             </div>
-                          <?php
+                        </form>
+                        <?php
                           }
                           ?>
-                          
-                        </form>
                       </div>
                     </div>
                   </div>
