@@ -52,7 +52,11 @@
                             include "PHP/ctrl-crear-materia.php";
                          ?>
                           <div class="form-group">
-                            <label for="clave">Clave</label>
+                            <label for="clave">Claves</label>
+                            <input id="clave" class="form-control" type="text" name="clave">
+                          </div>
+                          <div class="form-group">
+                            <label for="clave">Claves</label>
                             <input id="clave" class="form-control" type="text" name="clave">
                           </div>
                           <div class="form-group">
