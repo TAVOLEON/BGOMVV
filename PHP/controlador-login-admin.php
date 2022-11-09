@@ -7,6 +7,10 @@ if(!empty($_POST["btnIngresar"])) {
         $usuario = $_POST["usuario"];
         $password = $_POST["password"];
         $sql = $conexion -> query("SELECT * FROM administradores WHERE curp='$usuario' and pin='$password'");
+        $sql2 = $conexion -> query("SELECT * FROM info_personal_admin WHERE curp='$usuario'");
+        if ($datos2 = $sql2 -> fetch_object()) {
+            $_SESSION["foto"]=$datos2 -> foto;
+        }
         if ($datos = $sql -> fetch_object()) {
             $_SESSION["curp"]=$datos -> curp; 
             $_SESSION["nombre"]=$datos -> nombre;

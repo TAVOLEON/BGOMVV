@@ -1,8 +1,9 @@
 <?php include "TEMPLETES/dashboard-admin.php";
 include "CONF/conexion.php";
 $curp= $_SESSION["curp"];
-$sql=$conexion->query("SELECT * FROM administradores WHERE curp='$curp'");
-$sql2=$conexion->query("SELECT * FROM info_personal_admin WHERE curp='$curp'");
+$curpdocente= $_GET["curp"];
+$sql=$conexion->query("SELECT * FROM docentes WHERE curp='$curpdocente'");
+$sql2=$conexion->query("SELECT * FROM info_personal_docentes WHERE curp='$curpdocente'");
 ?>
 
       <div class="w-100">
@@ -11,7 +12,7 @@ $sql2=$conexion->query("SELECT * FROM info_personal_admin WHERE curp='$curp'");
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <h4>Pagina WEB</h4>
+          <h4>Docentes</h4>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item dropdown ml-4">
@@ -36,10 +37,8 @@ $sql2=$conexion->query("SELECT * FROM info_personal_admin WHERE curp='$curp'");
             <div class="container">
               <div class="row">
                 <div class="col-lg-9">
-                  <h1 class="font-weight-bold mt-2 mb-0">Mi perfil</h1>
-                  <p class="lead text-muted"> <?php
-                  echo $_SESSION["nombre"] ," ", $_SESSION["apellidop"]," ", $_SESSION["apellidom"];
-                ?></p>
+                  <h1 class="font-weight-bold mt-2 mb-0">Editar Perfil</h1>
+                  <p class="lead text-muted">CURP : <?=$curpdocente?> </p>
                 </div>
               </div>
             </div>
@@ -52,9 +51,11 @@ $sql2=$conexion->query("SELECT * FROM info_personal_admin WHERE curp='$curp'");
                     <div class="row">
                       <div class="col-lg-9 ">
                         <h5 class="text-muted">Informacion de usuario</h5>
-                        <?php include "PHP/contrl-editar-perfil-admin.php"; ?>
+                        <?php include "PHP/contrl-editar-perfil-docente-admin.php"; ?>
                         <form method="POST" enctype="multipart/form-data">
-                          <?php while ($datos=$sql->fetch_object()) { ?>
+                          <?php
+                           while ($datos=$sql->fetch_object()) { ?>
+                            
                             <div class="form-group">
                               <label for="nombre">Nombre</label>
                               <input id="nombre" class="form-control" type="text" name="nombre" value="<?=$datos->nombre?>">
@@ -70,11 +71,6 @@ $sql2=$conexion->query("SELECT * FROM info_personal_admin WHERE curp='$curp'");
                             <div class="form-group">
                               <label for="pin">Password/PIN</label>
                               <input id="pin" class="form-control" type="password" name="pin" value="<?=$datos->pin?>">
-                            </div>
-                            
-                            <div class="form-group">
-                              <label for="curp">CURP</label>
-                              <input id="curp" class="form-control" type="text" name="curp" value="<?=$datos->curp?>">
                             </div>
                             <div class="form-group">
                               <button type="submit" class="btn btn-outline-info" value="ok" name="btnGuardar">Guardar</button>

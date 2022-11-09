@@ -1,9 +1,16 @@
 <?php include "TEMPLETES/dashboard-admin.php";
-$id=$_SESSION['curp'];
 include "CONF/conexion.php";
-include "PHP/ctrl-crear-materia.php";
-$sqlfoto=$conexion->query("SELECT foto FROM info_personal_admin WHERE curp='$id'");
+include "PHP/contrl-crear-aviso-alumno.php";
+$curp=$_SESSION['curp'] ;
+$sqlfoto=$conexion->query("SELECT foto FROM info_personal_admin WHERE curp='$curp'");
 ?>
+<script>
+function eliminar(){
+  var respuesta = confirm("Estas seguro que deseas eliminar?");
+  return respuesta
+  
+}
+</script>
 
       <div class="w-100">
         <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
@@ -11,7 +18,7 @@ $sqlfoto=$conexion->query("SELECT foto FROM info_personal_admin WHERE curp='$id'
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <h4>Materias y Salones</h4>
+          <h4>Alumnos</h4>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
             <?php while($datos = $sqlfoto->fetch_object()){?>
@@ -40,8 +47,8 @@ $sqlfoto=$conexion->query("SELECT foto FROM info_personal_admin WHERE curp='$id'
             <div class="container">
               <div class="row">
                 <div class="col-lg-9">
-                  <h1 class="font-weight-bold mt-2 mb-0">Crear Materia</h1>
-                  <p class="lead text-muted">Llene los campos</p>
+                  <h1 class="font-weight-bold mt-2 mb-0">Crear Aviso</h1>
+                  <p class="lead text-muted">Modifique los campos</p>
                 </div>
               </div>
             </div>
@@ -53,53 +60,34 @@ $sqlfoto=$conexion->query("SELECT foto FROM info_personal_admin WHERE curp='$id'
                   <div class="card-body">
                     <div class="row">
                       <div class="col-lg-9 ">
-                        <h6 class="text-muted">Nuevo Materia</h6>
+                        <h6 class="text-muted">Nuevo Aviso</h6>
                         <form method="POST" enctype="multipart/form-data">
-                        <?php
-                            include "CONF/conexion.php";
-                         ?>
                           <div class="form-group">
-                            <label for="clave">Clave</label>
-                            <input id="clave" class="form-control" type="text" name="clave">
+                          <label for="fecha">Numero de aviso</label>
+                            <input id="id" class="form-control" type="number" name="id" >
                           </div>
                           <div class="form-group">
-                            <label for="nombre">Nombre</label>
-                            <input id="nombre" class="form-control" type="text" name="nombre">
+                            <label for="fecha">Fecha</label>
+                            <input id="fecha" class="form-control" type="date" name="fecha">
                           </div>
                           <div class="form-group">
-                            <label for="hora">Hora</label>
-                            <input id="hora" class="form-control" type="text" name="hora">
+                            <label for="nombre">Titulo</label>
+                            <input id="nombre" class="form-control" type="text" name="titulo">
                           </div>
                           <div class="form-group">
-                            <label for="semestre">Semestre</label>
-                            <input id="semestre" class="form-control" type="text" name="semestre">
+                              <label for="descripcion">Descripcion</label>
+                              <textarea id="descripcion" class="form-control" name="descripcion" rows="3"></textarea>
+                            </div>
+                          <div class="form-group">
+                            <label for="enlace">Enlace</label>
+                            <input id="enlace" class="form-control" type="url" name="enlace">
                           </div>
                           <div class="form-group">
-                            <label for="docente">Docente</label>
-                            <select id="docente" class="form-control" name="docente">
-                            <?php
-                              include "CONF/conexion.php";
-                              $sql=$conexion->query("SELECT * FROM docentes");
-                              while ($datos = $sql->fetch_object()){
-                              ?>
-                              <option><?=$datos->nombre?></option>
-                              <?php } ?>
-                            </select>
-                          </div>
+                              <label for="imagen">Imagen</label>
+                              <input id="imagen" class="form-control-file" type="file" name="imagen">
+                            </div>
                           <div class="form-group">
-                            <label for="salon">Salon</label>
-                            <select id="salon" class="form-control" name="salon">
-                            <?php
-                              include "CONF/conexion.php";
-                              $sql=$conexion->query("SELECT * FROM salones");
-                              while ($datos = $sql->fetch_object()){
-                              ?>
-                              <option><?=$datos->nombre ?> </option> 
-                              <?php } ?>
-                            </select>
-                          </div>
-                          <div class="form-group">
-                            <button type="submit" class="btn btn-outline-info" value="ok" name="btnpublicar2">Crear</button>
+                            <button type="submit" class="btn btn-outline-info" value="ok" name="btnGuardar">Guardar Cambios</button>
                           </div>
                         </form>
                       </div>
@@ -110,7 +98,6 @@ $sqlfoto=$conexion->query("SELECT foto FROM info_personal_admin WHERE curp='$id'
           </section>
 
         </div>
-
       </div>
 
 

@@ -1,7 +1,7 @@
 <?php include "TEMPLETES/dashboard-admin.php";
 $id=$_SESSION['curp'];
 include "CONF/conexion.php";
-include "PHP/ctrl-crear-materia.php";
+include "PHP/ctrl-crear-salon.php";
 $sqlfoto=$conexion->query("SELECT foto FROM info_personal_admin WHERE curp='$id'");
 ?>
 
@@ -40,66 +40,35 @@ $sqlfoto=$conexion->query("SELECT foto FROM info_personal_admin WHERE curp='$id'
             <div class="container">
               <div class="row">
                 <div class="col-lg-9">
-                  <h1 class="font-weight-bold mt-2 mb-0">Crear Materia</h1>
+                  <h1 class="font-weight-bold mt-2 mb-0">Crear Salon</h1>
                   <p class="lead text-muted">Llene los campos</p>
                 </div>
               </div>
             </div>
-          </section>
-
+            </section>
+        
           <section>
             <div class="container">
                 <div class="card mt-1">
                   <div class="card-body">
                     <div class="row">
                       <div class="col-lg-9 ">
-                        <h6 class="text-muted">Nuevo Materia</h6>
+                        <h6 class="text-muted">Nuevo Salon</h6>
                         <form method="POST" enctype="multipart/form-data">
-                        <?php
-                            include "CONF/conexion.php";
-                         ?>
-                          <div class="form-group">
-                            <label for="clave">Clave</label>
-                            <input id="clave" class="form-control" type="text" name="clave">
-                          </div>
                           <div class="form-group">
                             <label for="nombre">Nombre</label>
                             <input id="nombre" class="form-control" type="text" name="nombre">
                           </div>
                           <div class="form-group">
-                            <label for="hora">Hora</label>
-                            <input id="hora" class="form-control" type="text" name="hora">
+                            <label for="descripcion">Descripcion</label>
+                            <input id="descripcion" class="form-control" type="text" name="descripcion">
                           </div>
                           <div class="form-group">
-                            <label for="semestre">Semestre</label>
-                            <input id="semestre" class="form-control" type="text" name="semestre">
+                            <label for="responsable">Responsable</label>
+                            <input id="responsable" class="form-control" type="text" name="responsable">
                           </div>
                           <div class="form-group">
-                            <label for="docente">Docente</label>
-                            <select id="docente" class="form-control" name="docente">
-                            <?php
-                              include "CONF/conexion.php";
-                              $sql=$conexion->query("SELECT * FROM docentes");
-                              while ($datos = $sql->fetch_object()){
-                              ?>
-                              <option><?=$datos->nombre?></option>
-                              <?php } ?>
-                            </select>
-                          </div>
-                          <div class="form-group">
-                            <label for="salon">Salon</label>
-                            <select id="salon" class="form-control" name="salon">
-                            <?php
-                              include "CONF/conexion.php";
-                              $sql=$conexion->query("SELECT * FROM salones");
-                              while ($datos = $sql->fetch_object()){
-                              ?>
-                              <option><?=$datos->nombre ?> </option> 
-                              <?php } ?>
-                            </select>
-                          </div>
-                          <div class="form-group">
-                            <button type="submit" class="btn btn-outline-info" value="ok" name="btnpublicar2">Crear</button>
+                            <button type="submit" class="btn btn-outline-info" value="ok" name="btnpublicar">Crear</button>
                           </div>
                         </form>
                       </div>
