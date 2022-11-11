@@ -84,6 +84,7 @@ function eliminar(){
                           <div class="form-group">
                             <label for="tutor">Tutor</label>
                             <select id="tutor" class="form-control" name="tutor">
+                            <option><?=$datos->tutor ?> </option>
                             <?php
                               include "CONF/conexion.php";
                               $sql2=$conexion->query("SELECT * FROM docentes");
@@ -96,6 +97,7 @@ function eliminar(){
                           <div class="form-group">
                             <label for="semestre">Semestre</label>
                             <select id="semestre" class="form-control" name="semestre">
+                            <option><?=$datos->semestre ?> </option>
                             <?php
                               include "CONF/conexion.php";
                               $sql2=$conexion->query("SELECT * FROM semestres");

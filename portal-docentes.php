@@ -1,8 +1,8 @@
-<?php include "TEMPLETES/dashboard-admin.php";
-$id=$_SESSION['curp'];
+<?php include "TEMPLETES/dashboard-docente.php";
+$curp=$_SESSION['curp'];
+$nombre=$_SESSION['nombre'];
 include "CONF/conexion.php";
-include "PHP/contrl-eliminar-aviso-docentes.php";
-$sqlfoto=$conexion->query("SELECT foto FROM info_personal_admin WHERE curp='$id'");
+$sqlfoto=$conexion->query("SELECT foto FROM info_personal_docentes WHERE curp='$curp'");
 ?>
 <script>
 function eliminar(){
@@ -17,7 +17,7 @@ function eliminar(){
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <h4>Docentes</h4>
+          <h4>Inicio</h4>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
             <?php while($datos = $sqlfoto->fetch_object()){?>
@@ -31,7 +31,7 @@ function eliminar(){
                 ?>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="editar-perfil-admin.php">Mi Perfil</a>
+                  <a class="dropdown-item" href="editar-perfil-docente.php">Mi Perfil</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="PHP/cerrar-sesion-admin.php">Cerrar Sesion</a>
                 </div>
@@ -42,77 +42,74 @@ function eliminar(){
         </nav>
 
         <div id="content">
-
-
-            <!-- SECCION DE AVISOS -->
           
-            <section>
+
+           <!-- SECCION DE BIENVENIDA -->
+          
+           <section>
             <div class="container mt-2">
               <div class="row">
-                <div class="col-lg-9">
+                <div class="col-lg-12 text-center">
+                  <h1 class="font-weight-bold mb-0">Bienvenido <?php echo $_SESSION["nombre"];?></h1>
                   <h2 class="font-weight-bold mb-0">Avisos</h2>
-                  <p class="lead text-muted">Avisos a Docentes</p>
                 </div>
-                <div class="col-lg-3 mt-3">
-                  <a href="./crear-aviso-docentes.php"><button class="btn btn-outline-success w-100 aling-self-center">Agregar Aviso</button></a>
-                </div>
+                
               </div> 
             </div>
           </section>
+
           <section>
-            <div class="container">
-              <div class="card">
-                <div class="card-body">
-                  <div class="row">
-                    <?php 
-                      include "CONF/conexion.php";
-                      include "PHP/contrl-crear-aviso-docentes.php";
-                      $sql=$conexion->query("SELECT * FROM anuncios_docentes ");
-                      while($datos = $sql->fetch_object()){?>
-                      <div class="col-lg-4 stat my-3">
-                        <h6 class="text-muted">Aviso <?= $datos->id ?></h6>
-                         <p><?= $datos->titulo ?></p>
-                         <p><?= $datos->descripcion ?></p>
-                         <a href="./editar-aviso-alumno.php?id=<?= $datos->id ?>"><button class="btn btn-outline-info">Editar</button></a>
-                         <a  onclick="return eliminar()"  href="./portal-administrativo-docentes.php?id=<?= $datos->id ?>"><button class="btn btn-outline-danger">Eliminar</button></a>
-                      </div>
-                      <?php
-                      }
-                      ?>
+          <?php 
+           include "CONF/conexion.php";
+           $sql=$conexion->query("SELECT * FROM anuncios_docentes ");
+           while($datos = $sql->fetch_object()){?>
+          <div class="container mt-5">
+            <div class="card">
+              <div class="row ">
+                <div class="col-md-7 py-5 text-center">
+                  <div class="card-block px-4">
+                    <h4 class="card-title"><?=$datos->titulo?></h4>
+                    <p class="card-text"><?=$datos->descripcion?></p>
+                    <a href="<?=$datos->enlace?>"><button class="btn btn-outline-primary" type="button">Mas informacion</button></a>
+                    <p class="card-text pt-3">Fecha de publicacion: <?=$datos->fecha?></p>
                   </div>
+                </div>
+                <!-- Carousel start -->
+                <div class="col-md-5">
+                    <img class="d-block img-fluid" style="max-width:450px; max-height:300px;" src="data:/image/jpg;base64,<?php echo base64_encode($datos->imagen)?>">
                 </div>
               </div>
             </div>
+          </div>
+          <?php } ?>
           </section>
-
-          <!-- SECCION DE DOCENTES -->
           
+
           <section>
             <div class="container mt-2">
               <div class="row">
-                <div class="col-lg-9">
-                  <h2 class="font-weight-bold mb-0">Docentes</h2>
-                  <p class="lead text-muted">Docentes Activos</p>
-                </div>
-                <div class="col-lg-3 mt-3">
-                  <a href="./crear-docente.php"><button class="btn btn-outline-success w-100 aling-self-center">Agregar Docente</button></a>
+                <div class="col-lg-12 text-center">
+                  <h1 class="font-weight-bold mb-0">Grupos Asignados</h1>
                 </div>
               </div> 
             </div>
           </section>
+          
           <section>
-            <div class="container">
+            <div class="container mt-5">
               <div class="card">
                 <div class="card-body">
                   <div class="row">
                     <?php 
                       include "CONF/conexion.php";
-                      $sql=$conexion->query("SELECT * FROM docentes ");
+                      $sql=$conexion->query("SELECT * FROM grupos WHERE tutor='$nombre'");
                       while($datos = $sql->fetch_object()){?>
                       <div class="col-lg-6 stat my-3">
-                        <h6 class="text-muted">CURP: <?= $datos->curp?></h6>
-                         <p>Nombre: <?= $datos->nombre?> <?= $datos->apellidop?> <?= $datos->apellidom?></p>
-                         <a href="./editar-perfil-docente-admin.php?curp=<?= $datos->curp ?>"><button class="btn btn-outline-info">Editar</button></a>
+                        <h6 class="text-muted">Grupo <?= $datos->nombre ?></h6>
+                         <p>Tutor Asignado <?= $datos->tutor ?></p>
+                         <p>Semestre: <?= $datos->semestre ?></p>
+                         <p>Especialidad: <?= $datos->especialidad ?></p>
+                         <a href="./listar-alumnos-docente.php?grupo=<?= $datos->nombre ?>"><button class="btn btn-outline-primary">Ver Alumnos</button></a>
                       </div>
                       <?php
                       }
@@ -122,12 +119,9 @@ function eliminar(){
               </div>
             </div>
           </section>
-
-           
           
-
 
           <!-- CIERRE DE DIVS PRINCIPALES -->
         </div> 
       </div>
-<?php include "TEMPLETES/pie-dashboard-admin.php";?>
+<?php include "TEMPLETES/pie-dashboard-alumno.php";?>

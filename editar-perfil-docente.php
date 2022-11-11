@@ -1,9 +1,8 @@
-<?php include "TEMPLETES/dashboard-admin.php";
+<?php include "TEMPLETES/dashboard-docente.php";
 include "CONF/conexion.php";
 $curp= $_SESSION["curp"];
-$matricula= $_GET["matricula"];
-$sql=$conexion->query("SELECT * FROM alumnos WHERE matricula='$matricula'");
-$sql2=$conexion->query("SELECT * FROM info_personal_alumnos WHERE matricula='$matricula'");
+$sql=$conexion->query("SELECT * FROM docentes WHERE curp='$curp'");
+$sql2=$conexion->query("SELECT * FROM info_personal_docentes WHERE curp='$curp'");
 ?>
 
       <div class="w-100">
@@ -12,7 +11,7 @@ $sql2=$conexion->query("SELECT * FROM info_personal_alumnos WHERE matricula='$ma
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <h4>Alumnos</h4>
+          <h4>Docentes</h4>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item dropdown ml-4">
@@ -22,7 +21,7 @@ $sql2=$conexion->query("SELECT * FROM info_personal_alumnos WHERE matricula='$ma
                 ?>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="editar-perfil-admin.php">Mi Perfil</a>
+                  <a class="dropdown-item" href="editar-perfil-docente.php">Mi Perfil</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="PHP/cerrar-sesion-admin.php">Cerrar Sesion</a>
                 </div>
@@ -38,7 +37,7 @@ $sql2=$conexion->query("SELECT * FROM info_personal_alumnos WHERE matricula='$ma
               <div class="row">
                 <div class="col-lg-9">
                   <h1 class="font-weight-bold mt-2 mb-0">Editar Perfil</h1>
-                  <p class="lead text-muted">Matricula : <?=$matricula?> </p>
+                  <p class="lead text-muted">CURP : <?=$curp?> </p>
                 </div>
               </div>
             </div>
@@ -51,10 +50,11 @@ $sql2=$conexion->query("SELECT * FROM info_personal_alumnos WHERE matricula='$ma
                     <div class="row">
                       <div class="col-lg-9 ">
                         <h5 class="text-muted">Informacion de usuario</h5>
-                        <?php include "PHP/contrl-editar-perfil-alumno-admin.php"; ?>
+                        <?php include "PHP/contrl-editar-perfil-docente.php"; ?>
                         <form method="POST" enctype="multipart/form-data">
                           <?php
                            while ($datos=$sql->fetch_object()) { ?>
+                            
                             <div class="form-group">
                               <label for="nombre">Nombre</label>
                               <input id="nombre" class="form-control" type="text" name="nombre" value="<?=$datos->nombre?>">
@@ -71,32 +71,6 @@ $sql2=$conexion->query("SELECT * FROM info_personal_alumnos WHERE matricula='$ma
                               <label for="pin">Password/PIN</label>
                               <input id="pin" class="form-control" type="password" name="pin" value="<?=$datos->pin?>">
                             </div>
-                            <div class="form-group">
-                              <label for="semestre">Semestre</label>
-                              <select id="semestre" class="form-control" name="semestre">
-                              <option><?=$datos->semestre?></option>
-                              <?php
-                                include "CONF/conexion.php";
-                                $sql=$conexion->query("SELECT * FROM semestres");
-
-                                while ($datos = $sql->fetch_object()){
-                                ?>
-                                <option><?=$datos->nombre?></option>
-                                <?php } ?>
-                              </select>
-                             </div>
-                              <div class="form-group">
-                                <label for="grupo">Grupo</label>
-                                <select id="grupo" class="form-control" name="grupo">
-                                <?php
-                                  include "CONF/conexion.php";
-                                  $sql=$conexion->query("SELECT * FROM grupos");
-                                  while ($datos = $sql->fetch_object()){
-                                  ?>
-                                  <option><?=$datos->nombre ?> </option> 
-                                  <?php } ?>
-                                </select>
-                              </div>
                             <div class="form-group">
                               <button type="submit" class="btn btn-outline-info" value="ok" name="btnGuardar">Guardar</button>
                             </div>
@@ -124,10 +98,6 @@ $sql2=$conexion->query("SELECT * FROM info_personal_alumnos WHERE matricula='$ma
                               <input id="fecha_nac" class="form-control" type="date" name="fecha_nac" value="<?=$datos->fecha_nacimiento?>">
                             </div>
                             <div class="form-group">
-                              <label for="curp">CURP</label>
-                              <input id="curp" class="form-control" type="text" name="curp" value="<?=$datos->curp?>">
-                            </div>
-                            <div class="form-group">
                               <label for="sexo">Sexo</label>
                               <input id="sexo" class="form-control" type="text" name="sexo" value="<?=$datos->sexo?>">
                             </div>
@@ -149,12 +119,8 @@ $sql2=$conexion->query("SELECT * FROM info_personal_alumnos WHERE matricula='$ma
                               <input id="telefono" class="form-control" type="text" name="telefono" value="<?=$datos->telefono?>">
                             </div>
                             <div class="form-group">
-                              <label for="tutor">Tutor</label>
-                              <input id="tutor" class="form-control" type="text" name="tutor" value="<?=$datos->tutor?>">
-                            </div>
-                            <div class="form-group">
-                              <label for="telefonotutor">Telefono Tutor</label>
-                              <input id="telefonotutor" class="form-control" type="text" name="telefonotutor" value="<?=$datos->telefono_tutor?>">
+                              <label for="rfc">RFC</label>
+                              <input id="rfc" class="form-control" type="text" name="rfc" value="<?=$datos->rfc?>">
                             </div>
                             <div class="form-group">
                               <label for="foto">Foto</label>
@@ -181,4 +147,4 @@ $sql2=$conexion->query("SELECT * FROM info_personal_alumnos WHERE matricula='$ma
 
 
 
-<?php include "TEMPLETES/pie-dashboard-admin.php";?>
+<?php include "TEMPLETES/pie-dashboard-docente.php";?>

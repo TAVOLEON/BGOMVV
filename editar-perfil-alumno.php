@@ -1,7 +1,6 @@
-<?php include "TEMPLETES/dashboard-admin.php";
+<?php include "TEMPLETES/dashboard-alumno.php";
 include "CONF/conexion.php";
-$curp= $_SESSION["curp"];
-$matricula= $_GET["matricula"];
+$matricula= $_SESSION["matricula"];
 $sql=$conexion->query("SELECT * FROM alumnos WHERE matricula='$matricula'");
 $sql2=$conexion->query("SELECT * FROM info_personal_alumnos WHERE matricula='$matricula'");
 ?>
@@ -51,51 +50,33 @@ $sql2=$conexion->query("SELECT * FROM info_personal_alumnos WHERE matricula='$ma
                     <div class="row">
                       <div class="col-lg-9 ">
                         <h5 class="text-muted">Informacion de usuario</h5>
-                        <?php include "PHP/contrl-editar-perfil-alumno-admin.php"; ?>
+                        <?php include "PHP/contrl-editar-perfil-alumno.php"; ?>
                         <form method="POST" enctype="multipart/form-data">
                           <?php
                            while ($datos=$sql->fetch_object()) { ?>
                             <div class="form-group">
-                              <label for="nombre">Nombre</label>
-                              <input id="nombre" class="form-control" type="text" name="nombre" value="<?=$datos->nombre?>">
+                              <label for="nombre">Nombre: <?=$datos->nombre?> </label>
+                              <input id="nombre" class="form-control" type="hidden" name="nombre" value="<?=$datos->nombre?>">
                             </div>
                             <div class="form-group">
-                              <label for="apellidop">Apellido Paterno</label>
-                              <input id="apellidop" class="form-control" type="text" name="apellidop" value="<?=$datos->apellidop?>">
+                              <label for="apellidop">Apellido Paterno: <?=$datos->apellidop?> </label>
+                              <input id="apellidop" class="form-control" type="hidden" name="apellidop" value="<?=$datos->apellidop?>">
                             </div>
                             <div class="form-group">
-                              <label for="apellidom">Apellido Materno</label>
-                              <input id="apellidom" class="form-control" type="text" name="apellidom" value="<?=$datos->apellidom?>">
+                              <label for="apellidom">Apellido Materno: <?=$datos->apellidom?></label>
+                              <input id="apellidom" class="form-control" type="hidden" name="apellidom" value="<?=$datos->apellidom?>">
                             </div>
                             <div class="form-group">
                               <label for="pin">Password/PIN</label>
                               <input id="pin" class="form-control" type="password" name="pin" value="<?=$datos->pin?>">
                             </div>
                             <div class="form-group">
-                              <label for="semestre">Semestre</label>
-                              <select id="semestre" class="form-control" name="semestre">
-                              <option><?=$datos->semestre?></option>
-                              <?php
-                                include "CONF/conexion.php";
-                                $sql=$conexion->query("SELECT * FROM semestres");
-
-                                while ($datos = $sql->fetch_object()){
-                                ?>
-                                <option><?=$datos->nombre?></option>
-                                <?php } ?>
-                              </select>
+                              <label for="semestre">Semestre: <?=$datos->semestre?> </label>
+                              <input id="semestre" class="form-control" type="hidden" name="semestre" value="<?=$datos->semestre?>">
                              </div>
                               <div class="form-group">
-                                <label for="grupo">Grupo</label>
-                                <select id="grupo" class="form-control" name="grupo">
-                                <?php
-                                  include "CONF/conexion.php";
-                                  $sql=$conexion->query("SELECT * FROM grupos");
-                                  while ($datos = $sql->fetch_object()){
-                                  ?>
-                                  <option><?=$datos->nombre ?> </option> 
-                                  <?php } ?>
-                                </select>
+                                <label for="grupo">Grupo: <?=$datos->grupo?></label>
+                                <input id="grupo" class="form-control" type="hidden" name="grupo" value="<?=$datos->grupo?>">
                               </div>
                             <div class="form-group">
                               <button type="submit" class="btn btn-outline-info" value="ok" name="btnGuardar">Guardar</button>
@@ -181,4 +162,4 @@ $sql2=$conexion->query("SELECT * FROM info_personal_alumnos WHERE matricula='$ma
 
 
 
-<?php include "TEMPLETES/pie-dashboard-admin.php";?>
+<?php include "TEMPLETES/pie-dashboard-alumno.php";?>
