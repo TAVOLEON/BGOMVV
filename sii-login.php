@@ -4,7 +4,7 @@
 </head>
     <!-- CONTENIDO DE INICIO -->
   
-    <section id="seleccion" class="mt-5">
+    <section id="seleccion" class=" pt-3 pb-5">
       <div class="container text-white mt-5">
       
       <div class="row mt-2">

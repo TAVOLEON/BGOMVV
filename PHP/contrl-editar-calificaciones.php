@@ -21,7 +21,7 @@ if (!empty($_POST["btnGuardarm1"])) {
         final='$final'
         WHERE id='$id'");
         if ($sql==1) {
-            header("Location: asignar-calificacion?matricula=$matricula");
+            header("Location: asignar-calificacion.php?matricula=$matricula");
         } else {
             echo "<div class= 'alert alert-warning' >Error al Guardar </div>";
         }

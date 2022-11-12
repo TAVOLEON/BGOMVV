@@ -33,6 +33,7 @@ if (empty($_SESSION["curp"])) {
           <a class="d-block text-light p-3" href="./portal-administrativo-docentes.php">Docentes</a>
           <a class="d-block text-light p-3" href="./portal-administrativo-materias.php">Materias y Salones
           </a>
+          <a class="d-block text-light p-3" href="./portal-administrativo-administrador.php">Administrador</a>
           
         </div>
       </div>

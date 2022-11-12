@@ -7,8 +7,8 @@
     include "CONF/conexion.php";
     $sql=$conexion->query("SELECT * FROM secciones_principales WHERE id=1");
     while($datos = $sql->fetch_object()){?>
-    <section id="inicio" class="mt-5 pt-2">
-      <div class="jumbotron pb-5 mt-5">
+    <section id="inicio" class="">
+      <div class="jumbotron pb-5">
         <h1 class="display-4"> <strong><?= $datos->titulo ?></strong></h1>
         <p class="lead"><?= $datos->subtitulo ?></p>
         <p class="lead"><?= $datos->cuerpo ?></p>

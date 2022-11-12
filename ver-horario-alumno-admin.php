@@ -58,7 +58,7 @@ function eliminar(){
                   <a href="./editar-horario.php?matricula=<?= $matricula?>"><button class="btn btn-outline-success w-100 aling-self-center">Asignar Materias</button></a>
                 </div>
                 <div class="col-lg-3 mt-3">
-                  <a href="./asignar-calificacion?matricula=<?= $matricula?>"><button class="btn btn-outline-success w-100 aling-self-center">Asignar Calificaciones</button></a>
+                  <a href="./asignar-calificacion.php?matricula=<?= $matricula?>"><button class="btn btn-outline-success w-100 aling-self-center">Asignar Calificaciones</button></a>
                 </div>
               </div> 
             </div>

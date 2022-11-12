@@ -17,7 +17,7 @@ function eliminar(){
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <h4>Docentes</h4>
+          <h4>Administradores</h4>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
             <?php while($datos = $sqlfoto->fetch_object()){?>
@@ -44,58 +44,19 @@ function eliminar(){
         <div id="content">
 
 
-            <!-- SECCION DE AVISOS -->
-          
-            <section>
-            <div class="container mt-2">
-              <div class="row">
-                <div class="col-lg-9">
-                  <h2 class="font-weight-bold mb-0">Avisos</h2>
-                  <p class="lead text-muted">Avisos a Docentes</p>
-                </div>
-                <div class="col-lg-3 mt-3">
-                  <a href="./crear-aviso-docentes.php"><button class="btn btn-outline-success w-100 aling-self-center">Agregar Aviso</button></a>
-                </div>
-              </div> 
-            </div>
-          </section>
-          <section>
-            <div class="container">
-              <div class="card">
-                <div class="card-body">
-                  <div class="row">
-                    <?php 
-                      include "CONF/conexion.php";
-                      include "PHP/contrl-crear-aviso-docentes.php";
-                      $sql=$conexion->query("SELECT * FROM anuncios_docentes ");
-                      while($datos = $sql->fetch_object()){?>
-                      <div class="col-lg-4 stat my-3">
-                        <h6 class="text-muted">Aviso <?= $datos->id ?></h6>
-                         <p><?= $datos->titulo ?></p>
-                         <p><?= $datos->descripcion ?></p>
-                         <a href="./editar-aviso-alumno.php?id=<?= $datos->id ?>"><button class="btn btn-outline-info">Editar</button></a>
-                         <a  onclick="return eliminar()"  href="./portal-administrativo-docentes.php?id=<?= $datos->id ?>"><button class="btn btn-outline-danger">Eliminar</button></a>
-                      </div>
-                      <?php
-                      }
-                      ?>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+            
 
-          <!-- SECCION DE DOCENTES -->
+          <!-- SECCION DE ADMINISTRADORES -->
           
           <section>
             <div class="container mt-2">
               <div class="row">
                 <div class="col-lg-9">
-                  <h2 class="font-weight-bold mb-0">Docentes</h2>
-                  <p class="lead text-muted">Docentes Activos</p>
+                  <h2 class="font-weight-bold mb-0">Administradores</h2>
+                  <p class="lead text-muted">Administradores Activos</p>
                 </div>
                 <div class="col-lg-3 mt-3">
-                  <a href="./crear-docente.php"><button class="btn btn-outline-success w-100 aling-self-center">Agregar Docente</button></a>
+                  <a href="./crear-admin.php"><button class="btn btn-outline-success w-100 aling-self-center">Agregar Administradores</button></a>
                 </div>
               </div> 
             </div>
@@ -107,13 +68,12 @@ function eliminar(){
                   <div class="row">
                     <?php 
                       include "CONF/conexion.php";
-                      $sql=$conexion->query("SELECT * FROM docentes ");
+                      $sql=$conexion->query("SELECT * FROM administradores ");
                       while($datos = $sql->fetch_object()){?>
                       <div class="col-lg-6 stat my-3">
                         <h6 class="text-muted">CURP: <?= $datos->curp?></h6>
                          <p>Nombre: <?= $datos->nombre?> <?= $datos->apellidop?> <?= $datos->apellidom?></p>
-                         <a href="./editar-perfil-docente-admin.php?curp=<?= $datos->curp ?>"><button class="btn btn-outline-info">Editar</button></a>
-                         <a href="./ver-perfil-docente.php?curp=<?= $datos->curp ?>"><button class="btn btn-outline-info">informacion</button></a>
+                         <a href="./ver-perfil-admin.php?curp=<?= $datos->curp ?>"><button class="btn btn-outline-info">Informacion</button></a>
                       </div>
                       <?php
                       }

@@ -5,7 +5,7 @@
     <!-- CONTENIDO DE INICIO -->
 
     
-    <section id="form" class="mt-5">
+    <section id="form" class="mt-5 pt-5 d-block">
       <div class="container">
         <div class="pb-5">
           <div class="row">
