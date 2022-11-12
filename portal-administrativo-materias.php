@@ -1,5 +1,7 @@
 <?php include "TEMPLETES/dashboard-admin.php";
-$id=$_SESSION['id'];
+$id=$_SESSION['curp'];
+include "CONF/conexion.php";
+$sqlfoto=$conexion->query("SELECT foto FROM info_personal_admin WHERE curp='$id'");
 ?>
 <script>
 function eliminar(){
@@ -14,18 +16,16 @@ function eliminar(){
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <h4>Materias</h4>
+          <h4>Materias y Salones</h4>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
+            <?php while($datos = $sqlfoto->fetch_object()){?>
+                <img style="width:50px; border-radius:10px;" class="img-fluid"  src="data:/image/jpg;base64,<?php echo base64_encode($datos->foto)?>" alt="">
+                <?php  } ?>
               <li class="nav-item dropdown ml-4">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <?php 
                   include "CONF/conexion.php";
-                   $sql=$conexion->query("SELECT * FROM admin_usuario WHERE id=$id ");
-                   while($datos = $sql->fetch_object()){?>
-                  <img style="width:45px; heigt: 45px" class="img-fluid" src="data:/image/jpg;base64,<?php echo base64_encode($datos->avatar)?>">
-                <?php
-                   }
                   echo $_SESSION["nombre"] ," ", $_SESSION["apellidop"]," ", $_SESSION["apellidom"];
                 ?>
                 </a>
@@ -41,20 +41,19 @@ function eliminar(){
         </nav>
 
         <div id="content">
-          
 
-           <!-- SECCION DE MATERIAS -->
+
+            <!-- SECCION DE SALONES -->
           
-           <section>
+            <section>
             <div class="container mt-2">
               <div class="row">
                 <div class="col-lg-9">
-                  <h2 class="font-weight-bold mb-0">Materias</h2>
-                  <p class="lead text-muted"></p>
+                  <h2 class="font-weight-bold mb-0">Salones</h2>
+                  <p class="lead text-muted">Salones de clases</p>
                 </div>
                 <div class="col-lg-3 mt-3">
-                  <a href="./crear-materia.php"><button class="btn btn-outline-success w-100 aling-self-center">Agregar</button></a>
-                  <?php include "PHP/contrl-eliminar-materia.php";?>
+                  <a href="./crear-salon.php"><button class="btn btn-outline-success w-100 aling-self-center">Agregar Salon</button></a>
                 </div>
               </div> 
             </div>
@@ -66,13 +65,15 @@ function eliminar(){
                   <div class="row">
                     <?php 
                       include "CONF/conexion.php";
-                      $sql=$conexion->query("SELECT * FROM materias");
+                      include "PHP/contrl-eliminar-salon.php";
+                      $sql=$conexion->query("SELECT * FROM salones ");
                       while($datos = $sql->fetch_object()){?>
-                      <div class="col-lg-3 stat my-3">
-                        <h6 class="text-muted"><?= $datos->clave ?></h6>
-                         <p><?= $datos->nombre ?></p>
-                         <a href="./editar-materia.php?id=<?=$datos->id?>"><button class="btn btn-outline-info">Editar</button></a>
-                         <a onclick="return eliminar()" href="./portal-administrativo-materias.php?id=<?=$datos->id?>"><button class="btn btn-outline-danger">Eliminar</button></a>
+                      <div class="col-lg-4 stat my-3">
+                        <h6 class="text-muted"><?= $datos->nombre ?></h6>
+                         <p><?= $datos->descripcion ?></p>
+                         <p><?= $datos->responsable ?></p>
+                         <a href="./editar-salon.php?nombre=<?= $datos->nombre ?>"><button class="btn btn-outline-info">Editar</button></a>
+                         <a  onclick="return eliminar()"  href="./portal-administrativo-materias.php?nombre=<?= $datos->nombre ?>"><button class="btn btn-outline-danger">Eliminar</button></a>
                       </div>
                       <?php
                       }
@@ -84,18 +85,17 @@ function eliminar(){
           </section>
 
 
-          <!-- SECCION DE HORARIOS -->
+           <!-- SECCION DE MATERIAS -->
           
-          <section>
+           <section>
             <div class="container mt-2">
               <div class="row">
                 <div class="col-lg-9">
-                  <h2 class="font-weight-bold mb-0">Horarios</h2>
-                  <p class="lead text-muted"></p>
+                  <h2 class="font-weight-bold mb-0">Materias</h2>
+                  <p class="lead text-muted">Materias en curso</p>
                 </div>
                 <div class="col-lg-3 mt-3">
-                  <a href="./crear-horario.php"><button class="btn btn-outline-success w-100 aling-self-center">Agregar</button></a>
-                  <?php include "PHP/contrl-eliminar-horario.php"; ?>
+                  <a href="./crear-materia.php"><button class="btn btn-outline-success w-100 aling-self-center">Agregar Materia</button></a>
                 </div>
               </div> 
             </div>
@@ -107,13 +107,14 @@ function eliminar(){
                   <div class="row">
                     <?php 
                       include "CONF/conexion.php";
-                      $sql=$conexion->query("SELECT * FROM horarios");
-                      while($datos = $sql->fetch_object()){?>
-                      <div class="col-lg-3 stat my-3">
-                        <h6 class="text-muted"><?= $datos->titulo ?></h6>
-                         <p><?= $datos->horario ?></p>
-                         <a href="./editar-horario.php?id=<?=$datos->id?>"><button class="btn btn-outline-info">Editar</button></a>
-                         <a onclick="return eliminar()" href="./portal-administrativo-materias.php?titulo=<?=$datos->titulo?>"><button class="btn btn-outline-danger">Eliminar</button></a>
+                      $sql2=$conexion->query("SELECT * FROM materias ");
+                      while($datos = $sql2->fetch_object()){?>
+                      <div class="col-lg-4 stat my-3">
+                        <h6 class="text-muted"><?= $datos->clave ?></h6>
+                         <p><?= $datos->nombre ?></p>
+                         <p><?= $datos->hora ?></p>
+                         <p><?= $datos->docente ?></p>
+                         <a href="./editar-materia.php?clave=<?= $datos->clave ?>"><button class="btn btn-outline-info">Editar</button></a>
                       </div>
                       <?php
                       }

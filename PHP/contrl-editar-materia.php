@@ -1,13 +1,16 @@
 <?php
-
+$claveid=$_GET["clave"];
 error_reporting(1);
-if (!empty($_POST["btnGuardar"])) {
-    if (!empty($_POST["clave"]) and !empty($_POST["nombre"])){
-        $id=$_POST["id"];
+if (!empty($_POST["btnpublicar2"])) {
+    if (!empty($_POST["clave"]) and !empty($_POST["nombre"]) and !empty($_POST["semestre"])){
         $clave=$_POST["clave"];
         $nombre=$_POST["nombre"];
+        $hora=$_POST["hora"];
+        $semestre=$_POST["semestre"]; 
+        $docente=$_POST["docente"]; 
+        $salon=$_POST["salon"]; 
 
-        $sql=$conexion->query("UPDATE materias SET clave='$clave',nombre='$nombre' WHERE id='$id'");
+        $sql=$conexion->query("UPDATE materias SET clave='$clave',nombre='$nombre',hora='$hora',semestre='$semestre',docente='$docente',salon='$salon' WHERE clave='$claveid'");
         if ($sql==1) {
             header("Location: portal-administrativo-materias.php");
         } else {

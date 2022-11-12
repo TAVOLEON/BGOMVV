@@ -1,11 +1,20 @@
 <?php
-if (!empty($_GET["id"])) {
-    $id=$_GET["id"];
-    $sql=$conexion->query("DELETE FROM materias WHERE id=$id");
-    if ($sql==1) {
-        echo "<div class= 'alert alert-info' >Materia Eliminada </div>";
-    } else {
-        echo "<div class= 'alert alert-danger' >Error al eliminar </div>";
+$claveid=$_GET["clave"];
+error_reporting();
+if (!empty($_POST["eliminarmateria"])) {
+    if (!empty($_POST["claveborrar"])){
+        $clave=$_POST["claveborrar"];
+        $sql=$conexion->query("DELETE FROM materias WHERE clave='$clave'");
+        if ($sql==1) {
+            header("Location: portal-administrativo-materias.php");
+        } else {
+            echo "<div class= 'alert alert-warning' >Error al Eliminar </div>";
+        }
+        
     }
-}    
+    else {
+    }
+}
 ?>
+
+

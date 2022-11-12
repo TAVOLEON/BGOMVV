@@ -86,12 +86,14 @@ function eliminar(){
           <section>
             <div class="container mt-2">
               <div class="row">
-                <div class="col-lg-9">
+                <div class="col-lg-6">
                   <p class="lead text-muted">Anuncios Pagina Principal</p>
                 </div>
                 <div class="col-lg-3 mt-3">
-                <a href="./crear-anuncio-home.php"><button class="btn btn-outline-success w-100 aling-self-center">Agregar</button></a>
-                <a href="./index.php#noticias"><button class="btn btn-outline-success w-100 ">Ver</button></a>
+                  <a href="./crear-anuncio-home.php"><button class="btn btn-outline-success w-100 aling-self-center">Agregar</button></a>
+                </div>
+                <div class="col-lg-3 mt-3">
+                  <a href="./index.php#noticias"><button class="btn btn-outline-success w-100 ">Ver</button></a>
                 </div>
                 <?php
                 include "CONF/conexion.php";

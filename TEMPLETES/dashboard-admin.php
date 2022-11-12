@@ -28,12 +28,13 @@ if (empty($_SESSION["curp"])) {
           <h4 class="font-weight-bold">Bachillerato MVV</h4>
         </div>
         <div class="menu text-light">
-          <a class="d-block text-light p-3 active " href="./portal-administrativo-web.php">Pagina WEB</a>
-          <a class="d-block text-light p-3" href="#">Alumnos</a>
-          <a class="d-block text-light p-3" href="#">Docentes</a>
-          <a class="d-block text-light p-3" href="#">Anuncios</a>
-          <a class="d-block text-light p-3" href="./portal-administrativo-materias.php">Materias y Horarios</a>
-          <a class="d-block text-light p-3" href="#">Configuracion</a>
+          <a class="d-block text-light p-3" href="./portal-administrativo-web.php">Pagina WEB</a>
+          <a class="d-block text-light p-3" href="./portal-administrativo-alumnos.php">Alumnos</a>
+          <a class="d-block text-light p-3" href="./portal-administrativo-docentes.php">Docentes</a>
+          <a class="d-block text-light p-3" href="./portal-administrativo-materias.php">Materias y Salones
+          </a>
+          <a class="d-block text-light p-3" href="./portal-administrativo-administrador.php">Administrador</a>
+          
         </div>
       </div>
 

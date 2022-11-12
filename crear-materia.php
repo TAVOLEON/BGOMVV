@@ -1,4 +1,9 @@
-<?php include "TEMPLETES/dashboard-admin.php";?>
+<?php include "TEMPLETES/dashboard-admin.php";
+$id=$_SESSION['curp'];
+include "CONF/conexion.php";
+include "PHP/ctrl-crear-materia.php";
+$sqlfoto=$conexion->query("SELECT foto FROM info_personal_admin WHERE curp='$id'");
+?>
 
       <div class="w-100">
         <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
@@ -6,9 +11,12 @@
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <h4>Materias</h4>
+          <h4>Materias y Salones</h4>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
+            <?php while($datos = $sqlfoto->fetch_object()){?>
+                <img style="width:50px; border-radius:10px;" class="img-fluid"  src="data:/image/jpg;base64,<?php echo base64_encode($datos->foto)?>" alt="">
+                <?php  } ?>
               <li class="nav-item dropdown ml-4">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <img src="" alt="">
@@ -49,7 +57,6 @@
                         <form method="POST" enctype="multipart/form-data">
                         <?php
                             include "CONF/conexion.php";
-                            include "PHP/ctrl-crear-materia.php";
                          ?>
                           <div class="form-group">
                             <label for="clave">Clave</label>
@@ -60,7 +67,39 @@
                             <input id="nombre" class="form-control" type="text" name="nombre">
                           </div>
                           <div class="form-group">
-                            <button type="submit" class="btn btn-outline-info" value="ok" name="btnpublicar">Crear</button>
+                            <label for="hora">Hora</label>
+                            <input id="hora" class="form-control" type="text" name="hora">
+                          </div>
+                          <div class="form-group">
+                            <label for="semestre">Semestre</label>
+                            <input id="semestre" class="form-control" type="text" name="semestre">
+                          </div>
+                          <div class="form-group">
+                            <label for="docente">Docente</label>
+                            <select id="docente" class="form-control" name="docente">
+                            <?php
+                              include "CONF/conexion.php";
+                              $sql=$conexion->query("SELECT * FROM docentes");
+                              while ($datos = $sql->fetch_object()){
+                              ?>
+                              <option><?=$datos->nombre?></option>
+                              <?php } ?>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="salon">Salon</label>
+                            <select id="salon" class="form-control" name="salon">
+                            <?php
+                              include "CONF/conexion.php";
+                              $sql=$conexion->query("SELECT * FROM salones");
+                              while ($datos = $sql->fetch_object()){
+                              ?>
+                              <option><?=$datos->nombre ?> </option> 
+                              <?php } ?>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <button type="submit" class="btn btn-outline-info" value="ok" name="btnpublicar2">Crear</button>
                           </div>
                         </form>
                       </div>

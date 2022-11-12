@@ -3,7 +3,6 @@ include "CONF/conexion.php";
 $curp= $_SESSION["curp"];
 $sql=$conexion->query("SELECT * FROM administradores WHERE curp='$curp'");
 $sql2=$conexion->query("SELECT * FROM info_personal_admin WHERE curp='$curp'");
-$sqlfoto=$conexion->query("SELECT foto FROM info_personal_admin WHERE curp='$curp'");
 ?>
 
       <div class="w-100">
@@ -15,9 +14,6 @@ $sqlfoto=$conexion->query("SELECT foto FROM info_personal_admin WHERE curp='$cur
           <h4>Pagina WEB</h4>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-            <?php while($datos = $sqlfoto->fetch_object()){?>
-                <img style="width:50px; border-radius:10px;" class="img-fluid"  src="data:/image/jpg;base64,<?php echo base64_encode($datos->foto)?>" alt="">
-                <?php  } ?>
               <li class="nav-item dropdown ml-4">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="" alt="">
                 <?php
@@ -58,8 +54,7 @@ $sqlfoto=$conexion->query("SELECT foto FROM info_personal_admin WHERE curp='$cur
                         <h5 class="text-muted">Informacion de usuario</h5>
                         <?php include "PHP/contrl-editar-perfil-admin.php"; ?>
                         <form method="POST" enctype="multipart/form-data">
-                          <?php
-                           while ($datos=$sql->fetch_object()) { ?>
+                          <?php while ($datos=$sql->fetch_object()) { ?>
                             <div class="form-group">
                               <label for="nombre">Nombre</label>
                               <input id="nombre" class="form-control" type="text" name="nombre" value="<?=$datos->nombre?>">
