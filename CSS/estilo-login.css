@@ -15,23 +15,26 @@ body{
 
 
 #seleccion{
+    width: 100%;
     background: url("../IMG/PORTADA2.jpg");
     background-repeat: no-repeat;
-    background-size: none;
+    background-size: cover;
+    
 }
 
 .container{
-    width: 100%;
     background: rgba(0,0,0,0.5);
     color: #fff;
-    padding-top: 50px;
+    padding: 0;
+    margin: 0;
+   
 }
 
   
   .boton:hover{
     background: var(--color3);
  
-    border-radius: 15px 5px 15px 5px;
+    border-radius: 15px 15px 15px 15px;
     transition: all 0.5s linear;
   }
 
@@ -41,4 +44,8 @@ body{
     border-radius: 15px;
   }
 
+
+.encabezados{
+  font-size: 4rem;
+}
 

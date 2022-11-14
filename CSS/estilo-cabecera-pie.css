@@ -9,25 +9,55 @@
     --color5: black;
 }
 
+html {
+  font-size: 62.5%; 
+  scroll-behavior: smooth;
+}
+
 body{
-    font-family: 'Montserrat','Roboto',sans-serif !important;
+  font-family: 'Montserrat','Roboto',sans-serif !important;
+  font-size: 1.6rem;
 }
 
-.fondo-nav{
-    background-color: var(--color1) !important;
+p{
+  font-size: 2rem;
+  line-height: 1.2;
 }
 
+.contenedor {
+  width: auto;
+  max-width: 180rem;
+  margin: 0 auto;
+}
+
+
+.titulo{
+  background-color: var(--color1);
+}
+
+
+.titulo h1{
+  font-size: 5rem;
+  text-align: center;
+  margin: 0;
+  padding: 1.5rem;
+}
 .fondo-hover:hover{
-    background: var(--color4);
-    color: var(--color1) !important;
-    border-radius: 15px 5px 15px 5px;
+    /* background: var(--color5); */
+    color: black!important;
+    border-radius: 15px 15px 15px 15px;
     transition: all 0.8s;
     
-
 }
+
+.nav-link a{
+  font-size: 2.5rem;
+  color: white;
+}
+
 .img-size{
-  max-width: 100px;
-  max-height: 100px;
+  max-width: 130px;
+  max-height: 130px;
 }
 
 /* estilos footer */
@@ -35,10 +65,10 @@ body{
 .footer {
     display: flex;
     flex-flow: row wrap;
+    border-radius: 50px 0px 0px 0px;
     padding: 30px 30px 20px 30px;
     color: #2f2f2f;
-    background-color: var(--color1);
-    border-top: 1px solid #e5e5e5;
+    background-color: var(--color4);
   }
   
   .footer > * {
@@ -51,20 +81,23 @@ body{
   }
   
   .footer__logo {
+    font-size: 4rem;
     font-weight: 400;
-
-    font-size: 2rem;
+    color: white;
+    font-size: 5rem;
   }
   
   .footer__addr h2 {
     margin-top: 1.3em;
-    font-size: 15px;
+    font-size: 2rem;
     font-weight: 400;
+    color: white;
   }
   
   .nav__title {
     font-weight: 400;
-    font-size: 15px;
+    color: white;
+    font-size: 2rem;
   }
   
   .footer address {
@@ -78,9 +111,7 @@ body{
     justify-content: center;
     height: 36px;
     max-width: max-content;
-    background-color: rgb(33, 33, 33, 0.07);
     border-radius: 100px;
-    color: #2f2f2f;
     line-height: 0;
     margin: 0.6em 0;
     font-size: 1rem;
